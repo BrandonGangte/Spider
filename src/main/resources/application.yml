@@ -1,0 +1,37 @@
+spring:
+  application:
+    name: spider
+  datasource:
+    url: "${SPIDER_DB_URL:jdbc:h2:file:./spider;DB_CLOSE_ON_EXIT=FALSE}"
+    username: ${SPIDER_DB_USER:sa}
+    password: ${SPIDER_DB_PASSWORD:}
+  sql:
+    init:
+      mode: always
+  servlet:
+    multipart:
+      max-file-size: 8MB
+      max-request-size: 22MB
+
+server:
+  port: ${SERVER_PORT:8080}
+
+spider:
+  ollama:
+    base-url: ${OLLAMA_BASE_URL:http://localhost:11434}
+    model: ${OLLAMA_MODEL:qwen3.5:9b}
+    temperature: ${OLLAMA_TEMPERATURE:0.2}
+    timeout: ${OLLAMA_TIMEOUT:PT120S}
+  chat:
+    max-messages: ${SPIDER_CHAT_MAX_MESSAGES:30}
+  tools:
+    workspace-root: ${SPIDER_WORKSPACE_ROOT:./workspace}
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health,info
+  endpoint:
+    health:
+      show-details: never

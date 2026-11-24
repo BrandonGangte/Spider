@@ -1,0 +1,10 @@
+target/
+.idea/
+spider.mv.db
+spider.trace.db
+workspace/
+spider-ui/node_modules/
+spider-ui/dist/
+spider-ui/.env
+spider-ui/.env.*
+!.env.example
